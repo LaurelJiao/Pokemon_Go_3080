@@ -115,11 +115,29 @@ namespace Pokemon_Go
         public int Cp { get; private set; }
         public int Damage { get; private set; }
         public string skill;
-        public Pokemon()
-        { }
+        private Random rnd = new Random();
+        public Pokemon(string type)
+        {
+            this.type = type;
+        }
 
-        public virtual void Powerup() { }
-        public virtual void Envolved() { }
+
+        public virtual void Powerup() {
+            int add = rnd.Next(40);
+            if (Hp != Hp_Maximum) {
+                Hp = Hp + add;
+            }
+            add = rnd.Next(70);
+            Cp = Cp + add;
+        }
+        public virtual void Envolved(string newtype) {
+            type = newtype;
+            int newadd = rnd.Next(80);
+            Hp = Hp + newadd;
+            newadd = rnd.Next(90);
+            Cp = Cp + newadd;
+
+        }
         public bool Deduct_Health(int deduct_num)
         {
             // Deduct the health, after the operation, return true is Hp <= 0
@@ -133,154 +151,7 @@ namespace Pokemon_Go
         }
         
     }
-    class Pichu : Pokemon
-    { 
-        private BitmapImage Pichu_Image = new BitmapImage(new Uri("Resources/pichu.png"));
-       // private Random rnd = new Random();
-        public new string name;
-        public new string type = "Pichu";
-        public new int Hp = 30;
-        public new int Cp = 24;
-        public new int Hp_Maximum = 200;
-        public new string skill = "Electrical shock";
-        public Pichu(string name)
-        { this.name = name; }
-        public override void Powerup()
-        {
-            if (Hp != Hp_Maximum)
-                Hp = Hp + 30;
-            Cp = Cp + 25;
-        }
-        public override void Envolved()
-        {
-            type = "Pikachu";
-            Hp_Maximum = 400;
-            skill = "Powered Electrical shock";
-        }
-
-    }
-    class Pikachu : Pokemon
-    { // Example
-        private BitmapImage Pikachu_Image = new BitmapImage(new Uri("Resources/pikachu.png"));
-       // private Random rnd = new Random();
-        public new string name;
-        public new string type = "Pikachu";
-        public new int Hp = 30;
-        public new int Cp = 24;
-        public new int Hp_Maximum = 400;
-        public new string skill = " Powered Electrical shock";
-        public Pikachu(string name)
-        { this.name = name; }
-        public override void Powerup()
-        {
-            if (Hp != Hp_Maximum)
-                Hp = Hp + 50;
-            Cp = Cp + 30;
-        }
-        public override void Envolved()
-        {      }
-
-    }
-    class Charmander : Pokemon
-    { // Example
-        private BitmapImage Pikachu_Image = new BitmapImage(new Uri("Resources/charmander.png"));
-        // private Random rnd = new Random();
-        public new string name;
-        public new string type = "Charmander";
-        public new int Hp = 25;
-        public new int Cp = 40;
-        public new int Hp_Maximum = 180;
-        public new string skill = "Fireball";
-        public Charmander(string name)
-        { this.name = name; }
-        public override void Powerup()
-        {
-            if (Hp != Hp_Maximum)
-                Hp = Hp + 27;
-            Cp = Cp + 13;
-        }
-        public override void Envolved()
-        {
-            type = "Charmeleon";
-            Hp_Maximum = 450;
-            skill = "Fire tornado";
-        }
-
-    }
-
-    class Charmeleon : Pokemon
-    { // Example
-        private BitmapImage Pikachu_Image = new BitmapImage(new Uri("Resources/charmeleon.png"));
-        // private Random rnd = new Random();
-        public new string name;
-        public new string type = "Charmeleon";
-        public new int Hp = 120;
-        public new int Cp = 70;
-        public new int Hp_Maximum = 450;
-        public new string skill = "Fire tornado";
-        public Charmeleon(string name)
-        { this.name = name; }
-        public override void Powerup()
-        {
-            if (Hp != Hp_Maximum)
-                Hp = Hp + 20;
-            Cp = Cp + 33;
-        }
-        public override void Envolved()
-        {
-        }
-
-    }
-    class Squirtle : Pokemon
-    { // Example
-        private BitmapImage Pikachu_Image = new BitmapImage(new Uri("Resources/squirtle.png"));
-        // private Random rnd = new Random();
-        public new string name;
-        public new string type = "Charmander";
-        public new int Hp = 23;
-        public new int Cp = 22;
-        public new int Hp_Maximum = 190;
-        public new string skill = "Waterfall";
-        public Squirtle(string name)
-        { this.name = name; }
-        public override void Powerup()
-        {
-            if (Hp != Hp_Maximum)
-                Hp = Hp + 34;
-            Cp = Cp + 23;
-        }
-        public override void Envolved()
-        {
-            type = "wartortle";
-            Hp_Maximum = 380;
-            skill = "Water canon";
-        }
-
-    }
-    class Wartortle : Pokemon
-    { // Example
-        private BitmapImage Pikachu_Image = new BitmapImage(new Uri("Resources/charmander.png"));
-        // private Random rnd = new Random();
-        public new string name;
-        public new string type = "Wartortle";
-        public new int Hp = 25;
-        public new int Cp = 40;
-        public new int Hp_Maximum = 180;
-        public new string skill = "Water canon";
-        public Wartortle(string name)
-        { this.name = name; }
-        public override void Powerup()
-        {
-            if (Hp != Hp_Maximum)
-                Hp = Hp + 27;
-            Cp = Cp + 13;
-        }
-        public override void Envolved()
-        {
-
-        }
-
-    }
+  
 
 
  
